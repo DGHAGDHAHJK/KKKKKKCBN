@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>留言板</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+			}
+
+			.container {
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+
+			input[type="text"],
+			textarea {
+				width: 100%;
+				padding: 8px;
+				margin: 5px 0;
+				box-sizing: border-box;
+			}
+
+			button {
+				background-color: #007bff;
+				color: white;
+				padding: 10px 20px;
+				border: none;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background-color: #0056b3;
+			}
+
+			.message {
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h2>留言板</h2>
+			<input type="text" id="name" placeholder="请输入您的姓名">
+			<textarea id="message" placeholder="请输入您的留言" rows="4"></textarea>
+			<button onclick="addMessage()">提交留言</button>
+			<div class="message" id="messageList"></div>
+		</div>
+
+		<script>
+			function addMessage() {
+				var name = document.getElementById('name').value;
+				var message = document.getElementById('message').value;
+
+				if (name.trim() === '' || message.trim() === '') {
+					alert('请输入姓名和留言内容');
+					return;
+				}
+
+				var messageList = document.getElementById('messageList');
+				var newMessage = document.createElement('div');
+				newMessage.innerHTML = '<strong>' + name + ':</strong> ' + message;
+				messageList.appendChild(newMessage);
+
+				document.getElementById('name').value = '';
+				document.getElementById('message').value = '';
+			}
+		</script>
+	</body>
+</html>
